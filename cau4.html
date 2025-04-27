@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký khóa học</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2f63ff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #2f63ff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 22px;
+        }
+
+        button:hover {
+            background-color: #2fcbff;
+        }
+
+        @media (max-width: 414px) {
+            .container {
+                padding: 10px;
+            }
+
+            input, select {
+                font-size: 14px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 800px;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .container {
+                max-width: 1000px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Đăng ký vị trí việc làm</h1>
+        <form id="registrationForm" onsubmit="return validateForm(event)">
+            <div class="form-group">
+                <label for="name">Họ và tên *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Địa chỉ email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Số điện thoại *</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="course">Công việc mong muốn *</label>
+                <select id="course" name="course" required>
+                    <option value="1">Kế Toán</option>
+                    <option value="2">Nhân Sự</option>
+                    <option value="3">Kỹ Thuật Viên</option>
+                    <option value="4">Kinh Doanh</option>
+                    <option value="5">Marketing</option>
+                    <option value="6">Lập Trình Viên</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="salary">Mức lương mong muốn *</label>
+                <input type="wage" id="salary" name="salary" required>
+            </div>
+
+            <button type="submit">Gửi</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            if (!name || !email || !phone) {
+                alert('Please fill in all required fields');
+                return false;
+            }
+
+            if (!email.includes('@')) {
+                alert('Please enter a valid email address');
+                return false;
+            }
+
+            if (!/^\d{10}$/.test(phone)) {
+                alert('Please enter a valid 10-digit phone number');
+                return false;
+            }
+            if(!/^\d+$/.test(document.getElementById('salary').value)) {
+                alert('Please enter a valid salary amount');
+                return false;
+            }
+
+            alert('Registration submitted successfully!');
+            event.target.reset();
+            return false;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu 3 - JSON và Vòng lặp While</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+           color: #2f63ff; 
+           text-align: center;
+           margin-bottom: 30px;
+        }
+        .course-info {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-left: 5px ; 
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        .course-info h3 {
+            margin-top: 0;
+            color: #2f63ff;
+        }
+         .course-info p {
+            margin: 5px 0;
+            line-height: 1.5;
+         }
+         .course-info strong {
+            color: #333;
+         }
+    </style>
+</head>
+<body>
+
+    <h1>Danh sách các vị trí tuyển dụng</h1>
+
+    <div id="course-list-container">
+        
+    </div>
+
+    <script>
+        
+        const coursesJSON = `
+        [
+          {
+            "tenViTri": "Kế Toán",
+            "moTa": "Xử lý các công việc liên quan đến kế toán, báo cáo tài chính, quản lý thuế và hạch toán.",
+            "yeuCau": " Có kinh nghiệm làm kế toán ít nhất 2 năm, am hiểu về pháp luật kế toán, chịu được áp lực công việc.",
+            "luong": "10.000.000 VNĐ - 15.000.000 VNĐ"
+          },
+          {
+            "tenViTri": "Nhân Sự",
+            "moTa": "Phụ trách tuyển dụng, đào tạo, quản lý nhân sự, xây dựng và thúc đẩy môi trường làm việc tích cực.",
+            "yeuCau": " Có kinh nghiệm làm nhân sự ít nhất 3 năm, kỹ năng giao tiếp tốt, kỹ năng quản lý và tổ chức tốt..",
+            "luong": "18.000.000 VNĐ - 25.000.000 VNĐ"
+          },
+          {
+          "tenViTri": "Kỹ Thuật Viên",
+            "moTa": "Thực hiện bảo dưỡng, sửa chữa, lắp đặt và cài đặt các thiết bị kỹ thuật trong công ty.",
+            "yeuCau": " Có kinh nghiệm làm kỹ thuật ít nhất 2 năm, kiến thức chuyên môn vững vàng, khả năng làm việc độc lập.",
+            "luong": "20.000.000 VNĐ - 25.000.000 VNĐ"
+          },
+          {
+           "tenViTri": "Kinh Doanh",
+            "moTa": "Phát triển và duy trì mối quan hệ với khách hàng, tìm kiếm và phát triển thị trường mới cho sản phẩm/dịch vụ của công ty.",
+            "yeuCau": "  Có kinh nghiệm làm marketing ít nhất 3 năm, hiểu biết về các phương pháp marketing truyền thống và kỹ thuật số.",
+            "luong": "18.000.000 VNĐ - 25.000.000 VNĐ"
+          },
+          {
+            "tenViTri": "Marketing",
+            "moTa": "Lập kế hoạch marketing, thực hiện các chiến lược quảng cáo, xây dựng thương hiệu và quảng bá sản phẩm/dịch vụ.",
+            "yeuCau": " Có kinh nghiệm làm marketing ít nhất 3 năm, hiểu biết về các phương pháp marketing truyền thống và kỹ thuật số.",
+            "luong": "18.000.000 VNĐ - 27.000.000 VNĐ"
+          },
+          {
+            "tenViTri": "Lập Trình Viên",
+            "moTa": "Phát triển và duy trì các ứng dụng phần mềm, tham gia vào quy trình phát triển phần mềm từ thiết kế đến triển khai.",
+            "yeuCau": "  Có kinh nghiệm làm lập trình viên ít nhất 2 năm, am hiểu về các ngôn ngữ lập trình như JavaScript, Python, Java, ...",
+            "luong": "20.000.000 VNĐ - 35.000.000 VNĐ"
+          }
+        ]
+        `;
+
+        
+        const courses = JSON.parse(coursesJSON);
+
+        
+        const container = document.getElementById('course-list-container');
+
+        
+        let i = 0;
+        while (i < courses.length) {
+            const course = courses[i]; 
+
+            
+            const courseDiv = document.createElement('div');
+            courseDiv.classList.add('course-info'); 
+
+           
+            courseDiv.innerHTML = `
+                <h3>${course.tenViTri}</h3>
+                <p><strong>Mô tả:</strong> ${course.moTa}</p>
+                <p><strong>Yêu cầu:</strong> ${course.yeuCau}</p>
+                <p><strong>Mức lương:</strong> ${course.luong}</p>
+            `;
+
+            
+            container.appendChild(courseDiv);
+
+        
+            i++;
+        }
+    </script>
+
+</body>
+</html>
